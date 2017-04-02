@@ -1,0 +1,53 @@
+{
+	"MENU" : {
+		"HOME" : "الصفحة الرئيسية",
+		"CATEGORIES" : "المنتجات",
+		"ABOUT" : "حول الماركة",
+		"EXHIBITION" : "المعرض",
+		"CONTACT" : "اتصل بنا"
+	},
+	"BC" : {
+		"HOME" : "الصفحة الرئيسية"
+	},	
+	"HEADERS" : {
+		"OUR_CATEGORIES" : "المنتجات",
+		"LATEST_PRODUCTS" : "أحدث الأصناف"
+	},
+	"CONTACT" : {
+		"SEND_US" : "تواصل معنا",
+		"INPUT_NAME" : "الاسم",
+		"INPUT_EMAIL" : "البريد الإلكتروني",
+		"INPUT_PHONE" : "رقم الهاتف",
+		"INPUT_SUBJECT" : "العنوان",
+		"INPUT_MESSAGE" : "الرسالة",
+		"SEND_MESSAGE" : "إرسال",
+		"CONTACT_INFO" : "معلومات التواصل",
+		"CONTACT_ADDRESS" : "العنوان",
+		"CONTACT_PHONE" : "أرقام الهواتف",
+		"CONTACT_BHOURES" : "ساعات العمل",
+		"CONTACT_EMAIL" : "البريد الإلكتروني"
+	},
+	"CATEGORIES" : {
+		"PREVIEW" : "عرض"
+	},
+	"CONTROLS" : {
+		"SHOW_ALL" : "عرض الكل"
+	},
+	"PRODUCT" : {
+		"PRODUCT_NUM" : ":رقم المنتج",
+		"PATENT_NUM" : ":رقم التسجيل",
+		"PRODUCT_DESCRIPTION" : "شرح المنتج",
+		"SHARE_PRODUCT" : "شارك المنتج",
+		"SUGGESTED_PRODUCTS" : "منتجات مقترحة"
+	},
+	"CAROUSEL" : {
+		"SEE_MORE" : "تصفح أكثر"
+	},
+	"VALIDATION" : {
+		"NAME" : "يرجى إدخال الاسم!",
+		"EMAIL" : "يرجى إدخال البريد الإلكتروني!",
+		"SUBJECT" : "يرجى إدخال عنوان الرسالة!",
+		"MSG" : "يرجى إدخال نص الرسالة!"
+	}
+	
+}

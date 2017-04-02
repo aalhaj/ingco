@@ -1,0 +1,20 @@
+<section class="single-about about-area" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <div class="about-images">
+                  <img src="assets/img/ingcobrand.png" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="single-about tab-content">
+                    <div class="tab-content">
+                        <h3>{{'MENU.ABOUT' | translate}}</h3>
+                        <p ng-if="$root.lang == 'ar'">{{$root.settings.about_us_ar}}</p>
+                        <p ng-if="$root.lang == 'en'">{{$root.settings.about_us_en}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

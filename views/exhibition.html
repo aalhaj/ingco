@@ -1,0 +1,20 @@
+<link href="assets/css/gallery-grid.css" rel="stylesheet">
+
+<div id="grid-gallery" class="grid-gallery">
+	<section class="grid-wrap">
+		<ul class="grid">
+			<li class="grid-sizer"></li>
+			<li gallery-directive="" gallery="gItem" ng-repeat="gItem in mc.gallery" place="grid" lang="{{lang}}"></li>
+		</ul>
+	</section>
+	<section class="slideshow">
+		<ul>
+			<li gallery-directive="" gallery="gItem" ng-repeat="gItem in mc.gallery" place="modal" lang="{{lang}}"></li>
+		</ul>
+		<nav>
+			<span class="fa fa-chevron-left icon nav-prev"></span>
+			<span class="fa fa-chevron-right icon nav-next"></span>
+			<span class="fa fa-times icon nav-close"></span>
+		</nav>
+	</section>
+</div>

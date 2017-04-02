@@ -1,0 +1,14 @@
+<div class="our-category-area section-pbottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="carousel-title">
+            <h2>{{ 'HEADERS.LATEST_PRODUCTS' | translate}}</h2>
+        </div>
+      </div>
+      <div id="latest-products" class="col-md-12" ng-controller="CategoryController">
+        <div category-product-directive="" class="single-product" product="prod" ng-repeat="prod in product | limitTo:12 | orderBy : -modified" place="home-latest-product"></div>
+      </div>
+    </div>
+  </div>
+</div>

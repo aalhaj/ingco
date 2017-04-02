@@ -1,0 +1,47 @@
+<div role="tabpanel" class="tab-pane " id="users" ng-controller="UserController" ng-init="getRecords()">
+  <div class="panel panel-default users-content">
+      <div class="panel-heading">الأعضاء
+        <a href="javascript:void(0);" class="glyphicon glyphicon-plus add-btn" onclick="$('.formData').slideToggle();"></a></div>
+
+      <div class="panel-body none formData">
+          <form class="form" name="userForm">
+              <div class="form-group">
+                  <label>الاسم</label>
+                  <input type="text" class="form-control" name="name" ng-model="tempUserData.name"/>
+              </div>
+              <div class="form-group">
+                  <label>البريد الإلكتروني</label>
+                  <input type="text" class="form-control" name="username" ng-model="tempUserData.username"/>
+              </div>
+              <div class="form-group">
+                  <label>كلمة المرور</label>
+                  <input type="text" class="form-control" name="password" ng-model="tempUserData.password"/>
+                  <label>إعادة كلمة المرور</label>
+                  <input type="text" class="form-control" name="password2" ng-model="tempUserData.password2"/>
+              </div>
+              <a href="javascript:void(0);" class="btn btn-warning" onclick="$('.formData').slideUp();">Cancel</a>
+              <a href="javascript:void(0);" class="btn btn-success" ng-hide="tempUserData.id" ng-click="addUser()">إضافة</a>
+              <a href="javascript:void(0);" class="btn btn-success" ng-hide="!tempUserData.id" ng-click="updateUser()">تعديل</a>
+          </form>
+      </div>
+      <table class="table table-striped">
+          <tr>
+              <th width="5%">#</th>
+              <th width="20%">Name</th>
+              <th width="30%">Email</th>
+              <th width="14%">Created</th>
+              <th width="10%"></th>
+          </tr>
+          <tr ng-repeat="user in users | orderBy:'-created'">
+              <td>{{$index + 1}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.username}}</td>
+              <td>{{user.created}}</td>
+              <td>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-edit" ng-click="editUser(user)"></a>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-trash" ng-click="deleteUser(user)"></a>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>

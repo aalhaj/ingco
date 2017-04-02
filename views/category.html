@@ -1,0 +1,14 @@
+<div class="category-products-menu col-sm-3 col-xs-12">
+  <h4 class="title">{{'MENU.CATEGORIES' | translate}}</h4>
+  <ul class="vertical-menu">
+    <li ng-repeat="categ in mainCategories" data-category="{{categ.id}}">
+      <a ng-href="category/{{categ.id}}/{{categ.name_en}}">
+        <span ng-if="$root.lang=='ar'">{{categ.name_ar}}</span>
+        <span ng-if="$root.lang=='en'">{{categ.name_en}}</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div ng-controller="CategoryController" class="products-wrapper col-sm-9 col-xs-12">
+  <div category-product-directive="" class="single-product col-sm-3 col-xs-6" product="prod" ng-repeat="prod in product | getCategoryProducts: categoryId" ></div>
+</div>

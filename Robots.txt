@@ -1,0 +1,5 @@
+User-Agent: *
+Disallow: 
+Disallow: /assets/js
+Disallow: /store/store.json
+Disallow: /store/lang

@@ -1,0 +1,55 @@
+<div role="tabpanel" class="tab-pane " id="carousel" ng-controller="CarouselController" ng-init="getCarouselItems()">
+  <div class="panel panel-default carousel-content">
+      <div class="panel-heading">سلايدر
+        <a href="javascript:void(0);" class="glyphicon glyphicon-plus add-btn" ng-click="resetForm('carouselForm')"></a></div>
+
+      <div id="carouselForm" class="panel-body none formData">
+
+        <form class="form" name="carouselForm">
+          <div id="carousel-image" class="form-group" >
+              <label>الصورة</label>
+              <div id="carousel-form-img" class="form-img">
+                <img ng-src="../store/carousel/thumbnail/{{tempCarouselData.image}}"  class="img-responsive" />
+              </div>
+              <div class="form-img-ctrls">
+                <a href="javascript:void(0);" id="upload-carousel-img" class="btn btn-success">اختر صورة</a>
+              </div>
+              <input id="carousel-img-field" type="text" class="form-control hidden-form-control" name="image" ng-model="tempCarouselData.image"/>
+              <input type="text" class="form-control hidden-form-control" name="oldimage" ng-model="tempCarouselData.oldimage"/>
+          </div>
+          <div class="form-group">
+              <label>الرابط</label>
+              <input type="text" class="form-control" name="url" ng-model="tempCarouselData.url"/>
+          </div>
+          <a href="javascript:void(0);" class="btn btn-warning" ng-click="resetForm('carouselForm')">إغلاق</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="tempCarouselData.id" ng-click="addCarousel()">إضافة</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="!tempCarouselData.id" ng-click="updateCarousel()">تعديل</a>
+        </form>
+      </div>
+      <table class="table table-striped">
+          <tr>
+              <th width="5%">#</th>
+              <th width="20%">الصورة</th>
+              <th width="14%">الرابط</th>
+              <th width="10%">آخر تعديل</th>
+              <th width="10%"></th>
+          </tr>
+          <tr ng-repeat="carousel in carouselItems | orderBy:'-created'" data-category="{{category.id}}">
+              <td>{{$index + 1}}</td>
+              <td class="row-categ-img"><img src="../store/carousel/thumbnail/{{carousel.image}}" class="td-img" /></td>
+              <td>{{carousel.url}}</td>
+              <td>{{carousel.modified}}</td>
+              <td>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-edit" ng-click="editCarousel(carousel)"></a>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-trash" ng-click="deleteCarousel(carousel)"></a>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>
+
+<script>
+  $(function() {
+      createPLUpload('upload-carousel-img','carousel-image',[IMAGE_EXT],CAROUSEL_DIR,'carousel-form-img','carousel-img-field');
+  });
+</script>

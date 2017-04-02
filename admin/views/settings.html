@@ -1,0 +1,46 @@
+<div role="tabpanel" class="tab-pane " id=settings>
+  <div class="panel panel-default users-content">
+      <div class="panel-heading">إعدادت الموقع</div>
+      <div class="panel-body  formData">
+          <form class="form" name="settingsForm">
+              <div class="form-group">
+                  <label>البريد الإلكتروني</label>
+                  <input type="text" class="form-control" name="email" ng-model="storeSettings.email"/>
+              </div>
+              <div class="form-group">
+                  <label>رقم الهاتف</label>
+                  <input type="text" class="form-control" name="phone" ng-model="storeSettings.phone"/>
+              </div>
+              <div class="form-group">
+                  <label>رقم الفاكس</label>
+                  <input type="text" class="form-control" name="fax" ng-model="storeSettings.fax"/>
+              </div>
+              <div class="form-group">
+                  <label>حساب الفيسبوك</label>
+                  <input type="text" class="form-control" name="facebook" ng-model="storeSettings.facebook"/>
+              </div>
+              <div class="form-group">
+                  <label>حساب سكايب</label>
+                  <input type="text" class="form-control" name="skype" ng-model="storeSettings.skype"/>
+              </div>
+              <div class="form-group">
+                  <label>العنوان</label>
+                  <input type="text" class="form-control" name="address" ng-model="storeSettings.address"/>
+              </div>
+              <div class="form-group">
+                  <label>ساعات العمل</label>
+                  <input type="text" class="form-control" name="work_hours" ng-model="storeSettings.work_hours"/>
+              </div>
+              <div class="form-group">
+                  <label>حول الماركة - عربي</label>
+                  <textarea rows="4" class="form-control" name="about_us_ar" ng-model="storeSettings.about_us_ar"></textarea>
+              </div>
+              <div class="form-group">
+                  <label>حول الماركة - إنجليزي</label>
+                  <textarea rows="4" class="form-control" name="about_us_en" ng-model="storeSettings.about_us_en"></textarea>
+              </div>
+              <a href="javascript:void(0);" class="btn btn-success" ng-click="updateStoreSettings()">حفظ البيانات</a>
+          </form>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div role="tabpanel" class="tab-pane " id="categories" ng-controller="CategoryController" ng-init="getCategories()">
+  <div class="panel panel-default categories-content">
+      <div class="panel-heading">الأصناف
+        <a href="javascript:void(0);" class="glyphicon glyphicon-plus add-btn" ng-click="resetForm('categoryForm')"></a></div>
+
+      <div id="categoryForm" class="panel-body none formData">
+
+        <form class="form" name="categoryForm">
+          <div id="category-image" class="form-group" >
+              <label>الصورة</label>
+              <div id="category-form-img" class="form-img">
+                <img ng-src="../store/categories/thumbnail/{{tempCategoryData.image}}"  class="img-responsive" />
+              </div>
+              <div class="form-img-ctrls">
+                <a href="javascript:void(0);" id="upload-categ-img" class="btn btn-success">اختر صورة</a>
+              </div>
+              <input id="category-img-field" type="text" class="form-control hidden-form-control" name="image" ng-model="tempCategoryData.image"/>
+              <input type="text" class="form-control hidden-form-control" name="oldimage" ng-model="tempCategoryData.oldimage"/>
+          </div>
+          <div class="form-group">
+              <label>الاسم عربي</label>
+              <input type="text" class="form-control" name="name_ar" ng-model="tempCategoryData.name_ar"/>
+          </div>
+          <div class="form-group">
+              <label>الاسم إنجليزي</label>
+              <input type="text" class="form-control" name="name_en" ng-model="tempCategoryData.name_en"/>
+          </div>
+          <a href="javascript:void(0);" class="btn btn-warning" ng-click="resetForm('categoryForm')">إغلاق</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="tempCategoryData.id" ng-click="addCategory()">إضافة</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="!tempCategoryData.id" ng-click="updateCategory()">تعديل</a>
+        </form>
+      </div>
+      <table class="table table-striped">
+          <tr>
+              <th width="5%">#</th>
+              <th width="20%">الصورة</th>
+              <th width="30%">الإسم</th>
+              <th width="14%">الإسم</th>
+              <th width="10%">آخر تعديل</th>
+              <th width="10%"></th>
+          </tr>
+          <tr ng-repeat="category in categories | orderBy:'-created'" data-category="{{category.id}}">
+              <td>{{$index + 1}}</td>
+              <td class="row-categ-img"><img src="../store/categories/thumbnail/{{category.image}}" class="td-img" /></td>
+              <td>{{category.name_ar}}</td>
+              <td>{{category.name_en}}</td>
+              <td>{{category.modified}}</td>
+              <td>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-edit" ng-click="editCategory(category)"></a>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-trash" ng-click="deleteCategory(category)"></a>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>
+
+<script>
+  $(function() {
+      createPLUpload('upload-categ-img','category-image',[IMAGE_EXT],CATEGORIES_DIR,'category-form-img','category-img-field');
+  });
+</script>

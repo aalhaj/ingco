@@ -1,0 +1,8 @@
+<a class="category-img" href="category/{{category.id}}/{{category.name_en}}">
+  <img class="image-responsive" ng-src="store/categories/{{category.image}}" alt="category" />
+  <div class="overly">
+    <i class="openc fa fa-chevron-circle-right" aria-hidden="true"></i>
+  </div>
+  <a href="category/{{category.id}}/{{category.name_en}}" class="category-title" ng-if="$root.lang == 'en'">{{category.name_en}}</a>
+  <a href="category/{{category.id}}/{{category.name_ar}}" class="category-title" ng-if="$root.lang == 'ar'">{{category.name_ar}}</a>
+</a>

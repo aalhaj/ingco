@@ -1,0 +1,91 @@
+<div role="tabpanel" class="tab-pane " id="products" ng-controller="ProductController" ng-init="getProducts()">
+  <div class="panel panel-default products-content">
+      <div class="panel-heading">المنتجات
+        <a href="javascript:void(0);" class="glyphicon glyphicon-plus add-btn" ng-click="resetForm('productForm')"></a></div>
+
+      <div id="productForm" class="panel-body none formData">
+        <form class="form" name="productForm">
+          <div id="product-image" class="form-group" >
+              <label>الصورة</label>
+              <div id="product-form-img" class="form-img">
+                <img ng-src="../store/products/thumbnail/{{tempProductData.image}}"  class="img-responsive" />
+              </div>
+              <div class="form-img-ctrls">
+                <a href="javascript:void(0);" id="upload-product-img" class="btn btn-success">اختر صورة</a>
+              </div>
+              <input id="product-img-field" type="text" class="form-control hidden-form-control" name="image" ng-model="tempProductData.image"/>
+              <input type="text" class="form-control hidden-form-control" name="oldimage" ng-model="tempProductData.oldimage"/>
+          </div>
+          <div class="form-group">
+              <label>الاسم عربي</label>
+              <input type="text" class="form-control" name="name_ar" ng-model="tempProductData.name_ar"/>
+          </div>
+          <div class="form-group">
+              <label>الاسم إنجليزي</label>
+              <input type="text" class="form-control" name="name_en" ng-model="tempProductData.name_en"/>
+          </div>
+          <div class="form-group">
+              <label>رقم المنتج</label>
+              <input type="text" class="form-control" name="product_num" ng-model="tempProductData.product_num"/>
+          </div>
+          <div class="form-group">
+              <label>رقم التسجيل</label>
+              <input type="text" class="form-control" name="patent_num" ng-model="tempProductData.patent_num"/>
+          </div>
+          <div class="form-group" ng-controller="CategoryController" ng-init="getCategories()">
+              <label>الفئة</label>
+              <select class="form-control" name="category"  ng-model="tempProductData.category">
+                <option ng-repeat="categ in categories" value="{{categ.id}}">{{categ.name_ar}}</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label>شرح عربي</label>
+              <input type="text" class="form-control" name="description_ar" ng-model="tempProductData.description_ar"/>
+          </div>
+          <div class="form-group">
+              <label>شرح إنجليزي</label>
+              <input type="text" class="form-control" name="description_en" ng-model="tempProductData.description_en"/>
+          </div>
+
+          <a href="javascript:void(0);" class="btn btn-warning" ng-click="resetForm('productForm')">إلغاء</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="tempProductData.id" ng-click="addProduct()">إضافة</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="!tempProductData.id" ng-click="updateProduct()">تعديل</a>
+        </form>
+      </div>
+      <table class="table table-striped">
+          <tr>
+              <th width="5%">#</th>
+              <th width="10%">الصورة</th>
+              <th width="10%">الاسم عربي</th>
+              <th width="10%">الاسم إنجليزي</th>
+              <th width="10%">رقم المنتج</th>
+              <th width="10%">رقم التسجيل</th>
+              <th width="20%">الشرح عربي</th>
+              <th width="20%">الشرح إنجليزي</th>
+              <th width="10%">آخر تعديل</th>
+              <th width="10%"></th>
+          </tr>
+          <tr ng-repeat="product in products | orderBy:'-created'" data-product="{{product.id}}">
+              <td>{{$index + 1}}</td>
+              <td class="td-product-img"><img ng-src="../store/products/thumbnail/{{product.image}}"  /></td>
+              <td>{{product.name_ar}}</td>
+              <td>{{product.name_en}}</td>
+              <td>{{product.product_num}}</td>
+              <td>{{product.patent_num}}</td>
+              <td>{{product.description_ar}}</td>
+              <td>{{product.description_en}}</td>
+              <td>{{product.modified}}</td>
+              <td>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-edit" ng-click="editProduct(product)"></a>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-trash" ng-click="deleteProduct(product)"></a>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>
+
+<script>
+  $(function() {
+      createPLUpload('upload-product-img','product-image',[IMAGE_EXT],PRODUCTS_DIR,'product-form-img','product-img-field');
+  });
+</script>

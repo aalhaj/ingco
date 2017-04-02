@@ -1,0 +1,12 @@
+<div class="product-img">
+    <img src="store/products/{{product.image}}" alt="">
+    <div class="proudct-hover">
+        <a ng-if="$root.lang=='ar'" ng-click="$root.$state.go('product', { url:'/product/:id/:name/{p:json}',id: product.id, name: product.name_ar, product: product });"><i class="fa fa-search"></i></a>
+        <a ng-if="$root.lang=='en'" ng-click="$root.$state.go('product', { url:'/product/:id/:name/{p:json}',id: product.id, name: product.name_en, product: product });"><i class="fa fa-search"></i></a>
+        <h4>{{'CATEGORIES.PREVIEW' | translate}}</h4>
+    </div>
+</div>
+<div class="product-content">
+  <h4 class="product-name" ng-if="$root.lang=='ar'" ng-click="$root.$state.go('product', { url:'/product/:id/:name/{p:json}',id: product.id, name: product.name_ar, product: product });" title="{{product.name_ar}}">{{product.name_ar}}</h4>
+  <h4 class="product-name" ng-if="$root.lang=='en'" ng-click="$root.$state.go('product', { url:'/product/:id/:name/{p:json}',id: product.id, name: product.name_en, product: product });" title="{{product.name_en}}">{{product.name_en}}</h4>
+</div>

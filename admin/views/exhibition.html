@@ -1,0 +1,83 @@
+<div role="tabpanel" class="tab-pane " id="gallery" ng-controller="GalleryController" ng-init="getGalleryItems()">
+  <div class="panel panel-default categories-content">
+      <div class="panel-heading">المعرض
+        <a href="javascript:void(0);" class="glyphicon glyphicon-plus add-btn" onclick="$('.galleryForm').slideToggle();"></a></div>
+
+      <div class="panel-body none formData galleryForm">
+
+        <form class="form" name="galleryForm">
+          <div id="category-image" class="form-group" >
+              <label>النوع</label>
+              <select id="gallery-item-type" class="form-control" name="type"  ng-model="tempGalleryData.type" ng-change="galleryFileChange()">
+                <option value="image">صورة</option>
+                <option value="youtube">يوتيوب</option>
+              </select>
+          </div>
+          <div id="gallery-file" class="form-group" >
+              <label ng-bind="galleryFileLabel">صورة</label>
+              <div id="gallery-file-wrapper" ng-if="tempGalleryData.type == 'image'">
+                <div id="gallery-form-file" class="form-img" ng-if="tempGalleryData.type == 'image'">
+                  <img ng-src="../store/gallery/thumbnail/{{tempCategoryData.src}}" class="img-responsive" />
+                </div>
+                <div class="form-img-ctrls">
+                  <a href="javascript:void(0);" id="upload-gallery-file" class="btn btn-success">اختر ملف</a>
+                </div>
+              </div>
+              <input id="gallery-file-addition-field" type="text"  class="form-control hidden-form-control" name="additional_field" ng-model="tempGalleryData.additional_field"/>
+              <input id="gallery-file-field" type="text" class="form-control hidden-form-control" name="src" ng-model="tempGalleryData.src" ng-pattern="ytRegex"/>
+          </div>
+          <div class="form-group">
+              <label>العنوان - عربي</label>
+              <input type="text" class="form-control" name="title_ar" ng-model="tempGalleryData.title_ar" />
+          </div>
+          <div class="form-group">
+              <label>العنوان - إنجليزي</label>
+              <input type="text" class="form-control" name="title_en" ng-model="tempGalleryData.title_en" />
+          </div>
+          <div class="form-group">
+              <label>وصف - عربي</label>
+              <textarea type="text" class="form-control" name="description_ar" ng-model="tempGalleryData.description_ar" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+              <label>وصف - إنجليزي</label>
+              <textarea type="text" class="form-control" name="description_en" ng-model="tempGalleryData.description_en" rows="3"></textarea>
+          </div>
+          <a href="javascript:void(0);" class="btn btn-warning" onclick="$('.galleryForm').slideUp();">Cancel</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="tempGalleryData.id" ng-click="addGalleryItem()">إضافة</a>
+          <a href="javascript:void(0);" class="btn btn-success" ng-hide="!tempGalleryData.id" ng-click="updateGalleryItem()">تعديل</a>
+        </form>
+      </div>
+      <table class="table table-striped">
+          <tr>
+              <th width="3%">#</th>
+              <th width="5%">النوع</th>
+              <th width="20%">عرض</th>
+              <th width="15%">العنوان - عربي</th>
+              <th width="15%">العنوان - إنجليزي</th>
+              <th width="15%">وصف عربي</th>
+              <th width="15%">وصف إنجليزي</th>
+              <th width="10%">التاريخ</th>
+              <th width="5%"></th>
+          </tr>
+          <tr ng-repeat="gItem in gallery | orderBy:'-created'">
+              <td>{{$index + 1}}</td>
+              <td><img src="imgs/icon-{{gItem.type}}.png"</td>
+              <td ng-if="gItem.type == 'youtube'">
+                <iframe width="170" height="110" ng-src="{{trustSrc(gItem.src)}}" ng-show= frameborder="0" allowfullscreen></iframe>
+              </td>
+              <td ng-if="gItem.type == 'image'">
+                <img ng-src="../store/gallery/{{gItem.src}}" class="td-img" />
+              </td>
+              <td>{{gItem.title_ar}}</td>
+              <td>{{gItem.title_en}}</td>
+              <td>{{gItem.description_ar}}</td>
+              <td>{{gItem.description_en}}</td>
+              <td>{{gItem.created}}</td>
+              <td>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-edit" ng-click="editGalleryItem(gItem)"></a>
+                  <a href="javascript:void(0);" class="glyphicon glyphicon-trash" ng-click="deleteGalleryItem(gItem)"></a>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>

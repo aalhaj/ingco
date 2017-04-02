@@ -1,0 +1,41 @@
+<div id="googleMap" style="height: 400px; width: 100%; background: grey"></div>
+<div class="contact-area section-padding">
+    <div class="container">
+        <div class="row" ng-controller="ContactUsController">
+            <div class="col-md-5 col-md-offset-1">
+                <h2>{{'CONTACT.SEND_US' | translate}}</h2>
+                <div id="responsErr" class="alert alert-danger col-xs-12" style="display:none" ng-bind="responseErr"><p></p></div>
+                <div id="responsOk" class="alert alert-success col-xs-12"  style="display:none" ng-bind="responseOk"><p></p></div>
+                <form class="" action="" name="contactForm" method="post">
+                    <input type="text" placeholder="{{ 'CONTACT.INPUT_NAME' | translate}}" class="form-control" name="name" ng-model="contactData.name" required>
+                    <input type="email" placeholder="{{'CONTACT.INPUT_EMAIL' | translate}}" class="form-control"  name="email" ng-model="contactData.email" required>
+                    <input type="text" placeholder="{{'CONTACT.INPUT_PHONE' | translate}}" class="form-control"  name="phone" ng-model="contactData.phone">
+                    <input type="text" placeholder="{{'CONTACT.INPUT_SUBJECT' | translate}}" class="form-control"  name="subject" ng-model="contactData.subject" required>
+                    <textarea name="name" rows="10" cols="40" class="form-control" placeholder="{{'CONTACT.INPUT_MESSAGE' | translate}}"  name="body" ng-model="contactData.body"></textarea>
+                    <button type="button" class="btn btn-default" ng-click="sendMail()">{{'CONTACT.SEND_MESSAGE' | translate}}</button>
+                </form>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <div class="info-area">
+                    <h2>{{'CONTACT.CONTACT_INFO' | translate}}</h2>
+                </div>
+                <div class="location">
+                    <h4>{{'CONTACT.CONTACT_BHOURES' | translate}}</h4>
+                    <p>{{$root.settings.work_hours}}</p>
+                </div>
+                <div class="location">
+                    <h4>{{'CONTACT.CONTACT_ADDRESS' | translate}}</h4>
+                    <p>{{$root.settings.address}}</p>
+                </div>
+                <div class="location">
+                    <h4>{{'CONTACT.CONTACT_PHONE' | translate}}</h4>
+                    <p>{{$root.settings.phone}}<br>{{$root.settings.fax}}</p>
+                </div>
+                <div class="location">
+                    <h4>{{'CONTACT.CONTACT_EMAIL' | translate}}</h4>
+                    <p>{{$root.settings.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<figure class="gallery-details">
+  <figcaption>
+    <h4 ng-if="lang == 'ar'">{{gallery.title_ar}}</h4>
+    <h4 ng-if="lang == 'en'">{{gallery.title_en}}</h4>
+    <p ng-if="lang == 'ar'">{{gallery.description_ar}}</p>
+    <p ng-if="lang == 'en'">{{gallery.description_en}}</p>
+  </figcaption>
+  <div>
+    <img ng-src="store/gallery/{{gallery.src}}" alt="img01" ng-if="gallery.type=='image'"/>
+    <iframe  ng-src="{{trustSrc(gallery.src)}}" allowfullscreen ng-if="gallery.type=='youtube'"></iframe>
+  </div>
+</figure>

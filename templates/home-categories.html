@@ -1,0 +1,10 @@
+<a class="single-category-img col-sm-4 col-xs-12" href="category/{{category.id}}/{{category.name_en}}"><img class="image-responsive" ng-src="store/categories/{{category.image}}" alt="category"></a>
+<div class="single-category-extend col-sm-8 col-xs-12">
+    <a href="category/{{category.id}}/{{category.name_en}}" class="category-title" ng-show="$root.lang == 'en'">{{category.name_en}}</a>
+    <a href="category/{{category.id}}/{{category.name_ar}}" class="category-title" ng-show="$root.lang == 'ar'">{{category.name_ar}}</a>
+</div>
+<div ng-controller="CategoryController" class="col-sm-8 col-xs-12 category-products-wrapper">
+  <div data-category="{{category.id}}">
+    <div category-product-directive="" class="single-product" product="prod" ng-repeat="prod in product | getCategoryProducts: category.id | limitTo:6" place="home-category-product"></div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="IngcoToolsAdmin" ng-controller="MainController as mc">
+<head>
+    <meta charset="utf-8">
+    <base href="/ingco/admin/">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/ico"  href="../favicon.ico">
+    <title>Ingco Tools | Admin</title>
+    <link href="css/admin.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+</head>
+
+<body>
+  <div id="loading" style="display:none;"><img src="../assets/img/loading.gif" /></div>
+  <div class="container" >
+    <div class="row">
+      <div class="alert alert-danger none col-xs-12"><p></p></div>
+      <div class="alert alert-success none col-xs-12"><p></p></div>
+    </div>
+
+    <ul ng-if="login == false" class="nav nav-tabs" role="tablist">
+      <li role="presentation"><a ng-href="users" aria-controls="users" role="tab" data-toggle="tab">الأعضاء</a></li>
+      <li role="presentation"><a ng-href="carousel" aria-controls="carousel" role="tab" data-toggle="tab">سلايدر</a></li>
+      <li role="presentation"><a ng-href="categories" aria-controls="categories" role="tab" data-toggle="tab">الأصناف</a></li>
+      <li role="presentation"><a ng-href="products" aria-controls="products" role="tab" data-toggle="tab">المنتجات</a></li>
+      <li role="presentation"><a ng-href="exhibition" aria-controls="gallery" role="tab" data-toggle="tab">المعرض</a></li>
+      <li role="presentation"><a ng-href="settings" aria-controls="settings" role="tab" data-toggle="tab">الإعدادات</a></li>
+      <li class="fll"><a ng-href="login">تسجيل الخروج</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <ui-view></ui-view>
+    </div>
+  </div>
+
+  <script src="js/jQuery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-route.min.js"></script>
+  <script src="js/angular-ui-router.js"></script>
+  <script src="js/angular-sanitize.min.js"></script>
+  <script src="js/angular-cookies.min.js"></script>
+  <script src="js/plupload.full.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/app.module.js"></script>
+  <script src="js/services/authentication.service.js"></script>
+  <script src="js/services/flash.service.js"></script>
+  <script src="js/controllers/mainController.js"></script>
+  <script src="js/controllers/userController.js"></script>
+  <script src="js/controllers/login.controller.js"></script>
+  <script src="js/controllers/categoryController.js"></script>
+  <script src="js/controllers/productController.js"></script>
+  <script src="js/controllers/galleryController.js"></script>
+  <script src="js/controllers/carouselController.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+</html>

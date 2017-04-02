@@ -1,0 +1,44 @@
+<div class="single-product-area section-padding" ng-controller="ProductController">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="single-pro-img">
+                    <img ng-src="store/products/{{product.image}}" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="single-pro-content">
+                    <h2 class="product-title" ng-if="$root.lang=='ar'">{{product.name_ar}}</h2>
+                    <h2 class="product-title" ng-if="$root.lang=='en'">{{product.name_en}}</h2>
+                    <h4>{{ 'PRODUCT.PRODUCT_DESCRIPTION' | translate}}</h4>
+                    <p ng-if="$root.lang=='ar'">{{product.description_ar}}</p>
+                    <p ng-if="$root.lang=='en'">{{product.description_en}}</p>
+                    <p><b>{{'PRODUCT.PRODUCT_NUM'  | translate}} </b><span> {{product.product_num}}</span></p>
+                    <p><b>{{'PRODUCT.PATENT_NUM'  | translate}} </b><span> {{product.patent_num}}</span></p>
+                    <div class="product-social">
+                        <h3>{{ 'PRODUCT.SHARE_PRODUCT' | translate}}</h3>
+                        <ul class="bolg-socials">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="product-item like-products-wrapper">
+    <div class="container">
+        <div class="carousel-title">
+            <h2 class="ng-binding">{{'PRODUCT.SUGGESTED_PRODUCTS' | translate}}</h2>
+        </div>
+        <div id="like-products" ng-controller="CategoryController" class="col-xs-12 category-products-wrapper">
+            <div category-product-directive="" class="single-product" product="prod" ng-repeat="prod in (fproduct = product | getCategoryProducts: pCategory | limitTo : 6)" place="product-page"></div>
+        </div>
+    </div>
+</div>

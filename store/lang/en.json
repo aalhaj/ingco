@@ -1,0 +1,48 @@
+{
+	"MENU" : {
+		"HOME" : "HOME",
+		"CATEGORIES" : "CATEGORIES",
+		"ABOUT" : "ABOUT BRAND",
+		"EXHIBITION" : "EXHIBITION",
+		"CONTACT" : "CONTACT"
+	},
+	"BC" : {
+		"HOME" : "Home"
+	},
+	"HEADERS" : {
+		"OUR_CATEGORIES" : "Our Categories",
+		"LATEST_PRODUCTS" : "Latest Products"
+	},
+	"CONTACT" : {
+		"SEND_US" : "SEND US A MESSAGE",
+		"INPUT_NAME" : "Name",
+		"INPUT_EMAIL" : "Email",
+		"INPUT_PHONE" : "Phone Number",
+		"INPUT_SUBJECT" : "Subject",
+		"INPUT_MESSAGE" : "Message",
+		"SEND_MESSAGE" : "SEND",
+		"CONTACT_INFO" : "CONTACT INFORMATION",
+		"CONTACT_ADDRESS" : "Address",
+		"CONTACT_PHONE" : "Phone Number",
+		"CONTACT_BHOURES" : "Business hours",
+		"CONTACT_EMAIL" : "Email Address"
+	},
+	"CATEGORIES" : {
+		"PREVIEW" : "Preview"
+	},
+	"CONTROLS" : {
+		"SHOW_ALL" : "Show All"
+	},
+	"PRODUCT" : {
+		"PRODUCT_NUM" : "Product Number:",
+		"PATENT_NUM" : "Patent Number:",
+		"PRODUCT_DESCRIPTION" : "Product Description",
+		"SHARE_PRODUCT" : "Share This Product",
+		"SUGGESTED_PRODUCTS" : "Suggested Products"	
+		
+	},
+	"CAROUSEL" : {
+		"SEE_MORE" : "SEE MORE"
+	}
+	
+}

@@ -1,0 +1,19 @@
+<div class="our-category-area section-pbottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="carousel-title">
+            <h2>{{ 'HEADERS.OUR_CATEGORIES' | translate}}</h2>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="category-wrapper">
+          <div categories-directive="" class="single-category" category="categ" ng-repeat="categ in mc.categories | limitTo:4">
+            <div ng-controller="CategoryController" class="products-wrapper col-sm-9 col-xs-12"></div>
+          </div>
+          <a class="show-all" href="categories">{{'CONTROLS.SHOW_ALL' | translate}}<i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
