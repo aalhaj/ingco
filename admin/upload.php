@@ -41,9 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 
 // Settings
 $targetDir = '../'.$_REQUEST["targetUrl"];
-if($_REQUEST['thumbnail']=='true')
-	$targetDir.='/thumbnail';
-//$targetDir = 'uploads';
+$thumbDir = '../'.$_REQUEST["targetUrl"].'/'.'thumbnail'.'/';
+
 $cleanupTargetDir = false; // Remove old files
 $maxFileAge = 5 * 3600; // Temp file age in seconds
 
@@ -51,6 +50,10 @@ $maxFileAge = 5 * 3600; // Temp file age in seconds
 // Create target dir
 if (!file_exists($targetDir)) {
 	@mkdir($targetDir, 0755, true);
+}
+
+if (!file_exists($thumbDir)) {
+	@mkdir($thumbDir, 0755, true);
 }
 
 // Get a file name
@@ -62,7 +65,7 @@ if (isset($_REQUEST["name"])) {
 	$fileName = uniqid("file_");
 }
 
-$filePath = $targetDir . DIRECTORY_SEPARATOR . $fileName;
+$filePath = $targetDir . '/' . $fileName;
 
 // Chunking might be enabled
 $chunk = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
@@ -76,7 +79,7 @@ if ($cleanupTargetDir) {
 	}
 
 	while (($file = readdir($dir)) !== false) {
-		$tmpfilePath = $targetDir . DIRECTORY_SEPARATOR . $file;
+		$tmpfilePath = $targetDir . '/' . $file;
 
 		// If temp file is current file proceed to the next
 		if ($tmpfilePath == "{$filePath}.part") {
@@ -123,11 +126,12 @@ while ($buff = fread($in, 4096)) {
 if (!$chunks || $chunk == $chunks - 1) {
 	// Strip the temp .part suffix off
 	rename("{$filePath}.part", $filePath);
+	if(copy($filePath,$thumbDir.$fileName)){
+		$resize = new ResizeImage($thumbDir.$fileName);
+		$resize->resizeTo(150, 150);
+		$resize->saveImage($thumbDir.$fileName);
+	}
 }
-if($_REQUEST['thumbnail']=='true'){
-	$resize = new ResizeImage($filePath);
-	$resize->resizeTo(150, 150);
-	$resize->saveImage($filePath);
-}
+
 // Return Success JSON-RPC response
-die('{"jsonrpc" : "2.0", "result" : null, "id" : "id"}');
+die('{"result" : "Success"}');

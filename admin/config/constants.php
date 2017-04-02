@@ -23,5 +23,8 @@
 
   define("STORE_JSON_FILE_DIR", "../store/store.json");
   define("STORE_SETTINGS_JSON_FILE_DIR", "../store/settings.json");
-  define("CATEGORIES_DIR", "../store/store.json");
+  define("CATEGORIES_DIR", "../store/categories");
+  define("CAROUSEL_DIR", "../store/carousel");
+  define("PRODUCTS_DIR", "../store/products");
+
 ?>

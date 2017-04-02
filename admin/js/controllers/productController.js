@@ -4,9 +4,9 @@
   angular
     .module('IngcoToolsAdmin')
     .controller('ProductController',ProductController);
-    ProductController.$inject = ['$scope','$http'];
+    ProductController.$inject = ['$scope','$http','$timeout'];
 
-    function ProductController($scope,$http){
+    function ProductController($scope,$http,$timeout){
       $scope.categories = [];
       $scope.tempProductData = {};
       // function to get records from the database
@@ -69,7 +69,13 @@
                       });
 
                   }
-                  $('[data-product="'+pId+'"] .td-product-img').empty().append($('#product-form-img img').clone());
+                  var appendImg = function (pId) {
+                    $timeout(function () {
+                      $('[data-product="'+pId+'"] .td-product-img').empty().append($('#product-form-img img').clone());
+                    },200);
+                  };
+                  appendImg(pId);
+
                   $('#product-form-img img').attr('src','');
                   $scope.productForm.$setPristine();
                   $scope.tempProductData = {};

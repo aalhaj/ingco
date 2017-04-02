@@ -34,9 +34,9 @@
               <th width="10%">آخر تعديل</th>
               <th width="10%"></th>
           </tr>
-          <tr ng-repeat="carousel in carouselItems | orderBy:'-created'" data-category="{{category.id}}">
+          <tr ng-repeat="carousel in carouselItems | orderBy:'-created'" data-carousel="{{carousel.id}}">
               <td>{{$index + 1}}</td>
-              <td class="row-categ-img"><img src="../store/carousel/thumbnail/{{carousel.image}}" class="td-img" /></td>
+              <td class="row-categ-img"><img src="../store/carousel/{{carousel.image}}" class="td-img" /></td>
               <td>{{carousel.url}}</td>
               <td>{{carousel.modified}}</td>
               <td>

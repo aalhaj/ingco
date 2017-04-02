@@ -45,23 +45,7 @@ function createPLUpload(bbtn,contId,exte,dir,canvasId,fileFieldId) {
 
   $('#'+bbtn).data('uploader',uploader);
   $('#'+bbtn).data('uploader').init();
-  $('#'+bbtn).data('uploader').bind('BeforeUpload',function(up, file) {
-    if('thumb' in file && file.type.indexOf('image') > -1){
-        up.settings.url = '../upload/upload.php?thumbnail=true';
-    }else{
-        up.settings.url = '../upload/upload.php?thumbnail=false';
-    }
-  });
-  $('#'+bbtn).data('uploader').bind('FileUploaded',function(up, file) {
-    if(!('thumb' in file)) {
-      file.thumb = true;
-      file.loaded = 0;
-      file.percent = 0;
-      file.status = plupload.QUEUED;
-      up.trigger("QueueChanged");
-      up.refresh();
-    }
-  });
+
 }
 
 function imageCanvas(files,canvasId){

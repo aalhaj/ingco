@@ -5,9 +5,9 @@
     .module('IngcoToolsAdmin')
     .controller('GalleryController',GalleryController);
 
-    GalleryController.$inject = ['$scope','$http','$sce'];
+    GalleryController.$inject = ['$scope','$http','$sce','$timeout'];
 
-    function GalleryController($scope,$http,$sce){
+    function GalleryController($scope,$http,$sce,$timeout){
       $scope.gallery = [];
       $scope.tempGalleryData = {};
 
@@ -52,9 +52,9 @@
                     $('#upload-gallery-file').data('uploader').start();
                   }
 
-                  var cId="";
+                  var gId="";
                   if(type == 'edit'){
-                      cId=$scope.tempGalleryData.id;
+                      gId=$scope.tempGalleryData.id;
                       $scope.gallery[$scope.index].id = $scope.tempGalleryData.id;
                       $scope.gallery[$scope.index].type = $scope.tempGalleryData.type;
                       $scope.gallery[$scope.index].src = $scope.tempGalleryData.src;
@@ -65,7 +65,7 @@
                       $scope.gallery[$scope.index].description_en = $scope.tempGalleryData.description_en;
                       $scope.gallery[$scope.index].created = $scope.tempGalleryData.created;
                   }else{
-                    cId=response.data.data.id;
+                    gId=response.data.data.id;
                     $scope.gallery.push({
                         id:response.data.data.id,
                         type:response.data.data.type,
@@ -79,9 +79,13 @@
                     });
                   }
 
-                  setTimeout(function(cId) {
-                    $('[data-gallery="'+cId+'"] .row-categ-img').empty().append($('#gallery-form-img canvas'));
-                  },300);
+                  var appendImg = function (gId) {
+                    $timeout(function () {
+                      $('[data-gallery="'+gId+'"] .row-categ-img').empty().append($('#gallery-form-img canvas'));
+                    },200);
+                  };
+                  appendImg(gId);
+
                   $('#gallery-form-img').empty();
                   $scope.galleryForm.$setPristine();
                   $scope.tempGalleryData = {};

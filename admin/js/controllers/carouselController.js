@@ -4,9 +4,9 @@
   angular
     .module('IngcoToolsAdmin')
     .controller('CarouselController',CarouselController);
-    CarouselController.$inject = ['$scope','$http'];
+    CarouselController.$inject = ['$scope','$http','$timeout'];
 
-    function CarouselController($scope,$http){
+    function CarouselController($scope,$http,$timeout){
       $scope.carouselItems = [];
       $scope.tempCarouselData = {};
       // function to get records from the database
@@ -56,7 +56,13 @@
                         created:response.data.data.created
                     });
                   }
-                  $('[data-carousel="'+cId+'"] .row-categ-img').empty().append($('#carousel-form-img img').clone());
+
+                  var appendImg = function (cId) {
+                    $timeout(function () {
+                      $('[data-carousel="'+cId+'"] .row-categ-img').empty().append($('#carousel-form-img img').clone());
+                    },200);
+                  };
+                  appendImg(cId);
                   $scope.carouselForm.$setPristine();
                   $scope.tempCarouselData = {};
                   $scope.resetForm('carouselForm','up');
@@ -108,7 +114,7 @@
               };
               $http.post("action.php",data,config).then(function(response){
                   if(response.data.status == 'OK'){
-                      var index = $scope.categories.indexOf(carousel);
+                      var index = $scope.carouselItems.indexOf(carousel);
                       $scope.carouselItems.splice(index,1);
                       $scope.messageSuccess(response.data.msg);
                   }else{

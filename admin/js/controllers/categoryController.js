@@ -4,9 +4,9 @@
   angular
     .module('IngcoToolsAdmin')
     .controller('CategoryController',CategoryController);
-    CategoryController.$inject = ['$scope','$http'];
+    CategoryController.$inject = ['$scope','$http','$timeout'];
 
-    function CategoryController($scope,$http){
+    function CategoryController($scope,$http,$timeout){
       $scope.categories = [];
       $scope.tempCategoryData = {};
       // function to get records from the database
@@ -58,7 +58,12 @@
                         created:response.data.data.created
                     });
                   }
-                  $('[data-category="'+cId+'"] .row-categ-img').empty().append($('#category-form-img img').clone());
+                  var appendImg = function (cId) {
+                    $timeout(function () {
+                      $('[data-category="'+cId+'"] .row-categ-img').empty().append($('#category-form-img img').clone());
+                    },200);
+                  };
+                  appendImg(cId);
                   $scope.categoryForm.$setPristine();
                   $scope.tempCategoryData = {};
                   $scope.resetForm('categoryForm','up');

@@ -96,3 +96,4 @@ const GALLERY_DIR = "store/gallery";
 const CAROUSEL_DIR = "store/carousel";
 const IMAGE_EXT = { title : "Image files", extensions : "jpeg,jpg,gif,png" };
 const VIDEO_EXT = { title : "Viedo files", extensions : "mp4,WebM,Ogg" };
+const UP_FILE = BASE_URL+'/ingco/admin/upload.php';

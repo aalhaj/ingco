@@ -92,6 +92,7 @@ if(isset($_REQUEST['type']) && !empty($_REQUEST['type'])){
                 if($update){
                     if($tblName == 'category')  deleteOldImage('oldimage',CATEGORIES_DIR);
                     if($tblName == 'product')  deleteOldImage('oldimage',PRODUCTS_DIR);
+                    if($tblName == 'carousel')  deleteOldImage('oldimage',CAROUSEL_DIR);
 
                     $data['status'] = 'OK';
                     $data['msg'] = $actionSuccessMSG;
@@ -138,6 +139,7 @@ if(isset($_REQUEST['type']) && !empty($_REQUEST['type'])){
 
                   if($tblName == 'category')  deleteOldImage('image',CATEGORIES_DIR);
                   if($tblName == 'product')  deleteOldImage('image',PRODUCTS_DIR);
+                  if($tblName == 'carousel')  deleteOldImage('image',CAROUSEL_DIR);
 
                   $data['status'] = 'OK';
                   $data['msg'] = $actionSuccessMSG;
